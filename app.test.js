@@ -35,21 +35,21 @@ describe("POST /items", () => {
     })
 })
 
-// describe("PATCH /items", () => {
-//     test("Patch corn item name and price", async () => {
-//         const cobCorn = { "name": "cob corn", "price": ".35" }
-//         const resp = await request(app)
-//             .patch(`/items/corn`)
-//             .send(cobCorn);
-//         expect(resp.statusCode).toBe(200);
-//         expect(resp.body).toBe({ 'updated': cobCorn })
-//     })
-// })
+ describe("PATCH /items", () => {
+     test("Patch corn item name and price", async () => {
+         const cobCorn = { "name": "cob corn", "price": ".35" }
+         const resp = await request(app)
+             .patch(`/items/corn`)
+             .send(cobCorn);
+         expect(resp.statusCode).toBe(200);
+         expect(resp.body).toEqual({ 'updated': cobCorn })
+     })
+ })
 
 describe("DELETE /items", () => {
     test("Delete corn item name and price", async () => {
         const resp = await request(app)
-            .delete(`/items/corn`)
+            .delete(`/items/${corn.name}`)
         expect(resp.statusCode).toBe(200);
         expect(resp.body).toEqual({ 'message': 'Deleted' })
     })
