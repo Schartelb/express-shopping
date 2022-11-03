@@ -22,7 +22,7 @@ router.get('/:name', (req, res) => {
 
 router.patch('/:name', (req, res) => {
     items.forEach((i) => {
-        if (i.name == req.body.name) {
+        if (i.name == req.params.name) {
             i.name = req.body.name;
             i.price = req.body.price;
             res.status(200).json({ "updated": i })
